@@ -1,0 +1,2 @@
+# FastAPI
+Basics on fastAPI.
