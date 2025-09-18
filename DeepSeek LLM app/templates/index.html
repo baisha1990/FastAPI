@@ -1,0 +1,47 @@
+{% extends "base.html" %}
+
+{% block content %}
+    <h1 class="text-center mb-4">DeepSeek Chat with FastAPI</h1>
+    <div class="card">
+        <div class="card-body">
+            <form id="chatForm" onsubmit="sendMessage(event)">
+                <div class="mb-3">
+                    <label class="form-label">Your Message:</label>
+                    <input type="text" class="form-control" id="userMessage" required>
+                </div>
+                <button type="submit" class="btn btn-primary">Send</button>
+            </form>
+        </div>
+    </div>
+    <div id="responseArea" class="mt-4"></div>
+
+    <script>
+        async function sendMessage(event) {
+            event.preventDefault();
+            const message = document.getElementById("userMessage").value;
+            
+            const response = await fetch("/chat", {
+                method: "POST",
+                headers: { "Content-Type": "application/json" },
+                body: JSON.stringify({ message })
+            });
+            
+            const data = await response.json();
+            let prevmessages =document.getElementById("responseArea").innerHTML
+            if(prevmessages==null) prevmessages="";
+
+            document.getElementById("responseArea").innerHTML =
+            prevmessages +
+            ` <div class="alert alert-secondary">` + 
+            document.getElementById("userMessage").value +  `</div>`
+            +
+            `
+                <div class="alert alert-success">
+                    <strong>AI Response:</strong> ${data.choices[0].message.content}
+                </div>
+            `;
+
+    
+        }
+    </script>
+{% endblock %}
