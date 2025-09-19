@@ -1,0 +1,22 @@
+INFO:     127.0.0.1:50460 - "GET / HTTP/1.1" 200 OK
+done
+INFO:     127.0.0.1:50461 - "POST /chat HTTP/1.1" 200 OK
+
+
+------------------------
+Complete logs
+==================
+(VE) (base) fastapi_deepseek_app % uvicorn main:app
+INFO:     Started server process [3930]
+INFO:     Waiting for application startup.
+INFO:     Application startup complete.
+INFO:     Uvicorn running on http://127.0.0.1:8000 (Press CTRL+C to quit)
+INFO:     127.0.0.1:50446 - "GET / HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50446 - "GET /favicon.ico HTTP/1.1" 404 Not Found
+done
+INFO:     127.0.0.1:50447 - "POST /chat HTTP/1.1" 200 OK
+done
+INFO:     127.0.0.1:50454 - "POST /chat HTTP/1.1" 200 OK
+INFO:     127.0.0.1:50460 - "GET / HTTP/1.1" 200 OK
+done
+INFO:     127.0.0.1:50461 - "POST /chat HTTP/1.1" 200 OK
